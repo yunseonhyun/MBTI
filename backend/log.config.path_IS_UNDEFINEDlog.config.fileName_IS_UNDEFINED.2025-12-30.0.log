@@ -1,0 +1,109 @@
+2025-12-30 09:45:07.928  INFO 7500 --- [restartedMain] com.mbti.BackendApplication              : Starting BackendApplication using Java 21.0.8 with PID 7500 (C:\Users\TJ\Desktop\Project\MBTI\backend\build\classes\java\main started by TJ in C:\Users\TJ\Desktop\Project\mbti\backend)
+2025-12-30 09:45:07.930  INFO 7500 --- [restartedMain] com.mbti.BackendApplication              : No active profile set, falling back to 1 default profile: "default"
+2025-12-30 09:45:07.982  INFO 7500 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-12-30 09:45:07.982  INFO 7500 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-12-30 09:45:09.318  INFO 7500 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-12-30 09:45:09.332  INFO 7500 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-30 09:45:09.332  INFO 7500 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.17]
+2025-12-30 09:45:09.386  INFO 7500 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-30 09:45:09.387  INFO 7500 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1403 ms
+2025-12-30 09:45:10.169  INFO 7500 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-12-30 09:45:10.210  INFO 7500 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-12-30 09:45:10.218  INFO 7500 --- [restartedMain] com.mbti.BackendApplication              : Started BackendApplication in 2.915 seconds (process running for 4.122)
+2025-12-30 10:42:26.216  INFO 7044 --- [restartedMain] com.mbti.BackendApplication              : Starting BackendApplication using Java 21.0.8 with PID 7044 (C:\Users\TJ\Desktop\Project\MBTI\backend\build\classes\java\main started by TJ in C:\Users\TJ\Desktop\Project\mbti\backend)
+2025-12-30 10:42:26.218  INFO 7044 --- [restartedMain] com.mbti.BackendApplication              : No active profile set, falling back to 1 default profile: "default"
+2025-12-30 10:42:26.260  INFO 7044 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-12-30 10:42:26.261  INFO 7044 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-12-30 10:42:27.401  INFO 7044 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-12-30 10:42:27.412  INFO 7044 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-30 10:42:27.412  INFO 7044 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.17]
+2025-12-30 10:42:27.455  INFO 7044 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-30 10:42:27.455  INFO 7044 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1194 ms
+2025-12-30 10:42:28.109  INFO 7044 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-12-30 10:42:28.141  INFO 7044 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-12-30 10:42:28.149  INFO 7044 --- [restartedMain] com.mbti.BackendApplication              : Started BackendApplication in 2.443 seconds (process running for 3.131)
+2025-12-30 10:42:57.125  INFO 7044 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-30 10:42:57.126  INFO 7044 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-30 10:42:57.127  INFO 7044 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-12-30 10:42:57.176  INFO 7044 --- [http-nio-8080-exec-1] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/questions - Fetching all questions
+2025-12-30 10:42:57.177  INFO 7044 --- [http-nio-8080-exec-1] com.mbti.mbti.service.MbtiServiceImpl    : Fetching all questions
+2025-12-30 10:42:57.201  INFO 7044 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : MyHikariCP - Starting...
+2025-12-30 10:42:57.442  INFO 7044 --- [http-nio-8080-exec-1] com.zaxxer.hikari.pool.HikariPool        : MyHikariCP - Added connection org.postgresql.jdbc.PgConnection@eeca2a5
+2025-12-30 10:42:57.442  INFO 7044 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : MyHikariCP - Start completed.
+2025-12-30 10:43:26.051  INFO 7044 --- [http-nio-8080-exec-2] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/questions - Fetching all questions
+2025-12-30 10:43:26.052  INFO 7044 --- [http-nio-8080-exec-2] com.mbti.mbti.service.MbtiServiceImpl    : Fetching all questions
+2025-12-30 11:01:39.194  INFO 7044 --- [http-nio-8080-exec-4] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/questions - Fetching all questions
+2025-12-30 11:01:39.195  INFO 7044 --- [http-nio-8080-exec-4] com.mbti.mbti.service.MbtiServiceImpl    : Fetching all questions
+2025-12-30 11:10:17.136  INFO 7044 --- [http-nio-8080-exec-6] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/questions - Fetching all questions
+2025-12-30 11:10:17.136  INFO 7044 --- [http-nio-8080-exec-6] com.mbti.mbti.service.MbtiServiceImpl    : Fetching all questions
+2025-12-30 11:11:06.350  INFO 7044 --- [http-nio-8080-exec-7] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/questions - Fetching all questions
+2025-12-30 11:11:06.350  INFO 7044 --- [http-nio-8080-exec-7] com.mbti.mbti.service.MbtiServiceImpl    : Fetching all questions
+2025-12-30 11:11:10.582  INFO 7044 --- [http-nio-8080-exec-9] c.mbti.mbti.controller.MbtiController    : POST /api/mbti/submit - Submitting test for user: 홍길동
+2025-12-30 11:11:10.582  INFO 7044 --- [http-nio-8080-exec-9] com.mbti.mbti.service.MbtiServiceImpl    : Submitting test for user: 홍길동
+2025-12-30 11:11:10.599  INFO 7044 --- [http-nio-8080-exec-9] com.mbti.mbti.service.MbtiServiceImpl    : Calculated MBTI type: ESTJ
+2025-12-30 11:11:10.616  INFO 7044 --- [http-nio-8080-exec-9] com.mbti.mbti.service.MbtiServiceImpl    : Saved result with id: 1
+2025-12-30 11:11:10.650  INFO 7044 --- [http-nio-8080-exec-9] com.mbti.mbti.service.MbtiServiceImpl    : Saved 12 answers
+2025-12-30 11:11:10.665  INFO 7044 --- [http-nio-8080-exec-9] com.mbti.mbti.service.MbtiServiceImpl    : Fetching result with id: 1
+2025-12-30 11:11:33.279  INFO 7044 --- [http-nio-8080-exec-10] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/questions - Fetching all questions
+2025-12-30 11:11:33.283  INFO 7044 --- [http-nio-8080-exec-10] com.mbti.mbti.service.MbtiServiceImpl    : Fetching all questions
+2025-12-30 11:11:41.708  INFO 7044 --- [http-nio-8080-exec-1] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/questions - Fetching all questions
+2025-12-30 11:11:41.708  INFO 7044 --- [http-nio-8080-exec-1] com.mbti.mbti.service.MbtiServiceImpl    : Fetching all questions
+2025-12-30 11:12:12.665  INFO 7044 --- [http-nio-8080-exec-2] c.mbti.mbti.controller.MbtiController    : POST /api/mbti/submit - Submitting test for user: 나
+2025-12-30 11:12:12.665  INFO 7044 --- [http-nio-8080-exec-2] com.mbti.mbti.service.MbtiServiceImpl    : Submitting test for user: 나
+2025-12-30 11:12:12.665  INFO 7044 --- [http-nio-8080-exec-2] com.mbti.mbti.service.MbtiServiceImpl    : Calculated MBTI type: INTP
+2025-12-30 11:12:12.665  INFO 7044 --- [http-nio-8080-exec-2] com.mbti.mbti.service.MbtiServiceImpl    : Saved result with id: 2
+2025-12-30 11:12:12.692  INFO 7044 --- [http-nio-8080-exec-2] com.mbti.mbti.service.MbtiServiceImpl    : Saved 12 answers
+2025-12-30 11:12:12.692  INFO 7044 --- [http-nio-8080-exec-2] com.mbti.mbti.service.MbtiServiceImpl    : Fetching result with id: 2
+2025-12-30 11:25:45.398  INFO 7044 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : MyHikariCP - Shutdown initiated...
+2025-12-30 11:25:45.414  INFO 7044 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : MyHikariCP - Shutdown completed.
+2025-12-30 11:50:20.578  INFO 7836 --- [restartedMain] com.mbti.BackendApplication              : Starting BackendApplication using Java 21.0.8 with PID 7836 (C:\Users\TJ\Desktop\Project\MBTI\backend\build\classes\java\main started by TJ in C:\Users\TJ\Desktop\Project\MBTI\backend)
+2025-12-30 11:50:20.580  INFO 7836 --- [restartedMain] com.mbti.BackendApplication              : No active profile set, falling back to 1 default profile: "default"
+2025-12-30 11:50:20.627  INFO 7836 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-12-30 11:50:20.627  INFO 7836 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-12-30 11:50:22.099  INFO 7836 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-12-30 11:50:22.114  INFO 7836 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-30 11:50:22.114  INFO 7836 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.17]
+2025-12-30 11:50:22.185  INFO 7836 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-30 11:50:22.186  INFO 7836 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1558 ms
+2025-12-30 11:50:23.556  INFO 7836 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-12-30 11:50:23.593  INFO 7836 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-12-30 11:50:23.604  INFO 7836 --- [restartedMain] com.mbti.BackendApplication              : Started BackendApplication in 3.686 seconds (process running for 4.793)
+2025-12-30 11:50:51.920  INFO 7836 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-30 11:50:51.920  INFO 7836 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-30 11:50:51.921  INFO 7836 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-12-30 11:50:51.954  INFO 7836 --- [http-nio-8080-exec-1] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/questions - Fetching all questions
+2025-12-30 11:50:51.955  INFO 7836 --- [http-nio-8080-exec-1] com.mbti.mbti.service.MbtiServiceImpl    : Fetching all questions
+2025-12-30 11:50:51.976  INFO 7836 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : MyHikariCP - Starting...
+2025-12-30 11:50:52.192  INFO 7836 --- [http-nio-8080-exec-1] com.zaxxer.hikari.pool.HikariPool        : MyHikariCP - Added connection org.postgresql.jdbc.PgConnection@1cce22f1
+2025-12-30 11:50:52.195  INFO 7836 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : MyHikariCP - Start completed.
+2025-12-30 11:50:57.715  INFO 7836 --- [http-nio-8080-exec-4] c.mbti.mbti.controller.MbtiController    : POST /api/mbti/submit - Submitting test for user: 홍길동
+2025-12-30 11:50:57.722  INFO 7836 --- [http-nio-8080-exec-4] com.mbti.mbti.service.MbtiServiceImpl    : Submitting test for user: 홍길동
+2025-12-30 11:50:57.737  INFO 7836 --- [http-nio-8080-exec-4] com.mbti.mbti.service.MbtiServiceImpl    : Calculated MBTI type: ENTP
+2025-12-30 11:50:57.743  INFO 7836 --- [http-nio-8080-exec-4] com.mbti.mbti.service.MbtiServiceImpl    : Saved result with id: 3
+2025-12-30 11:50:57.770  INFO 7836 --- [http-nio-8080-exec-4] com.mbti.mbti.service.MbtiServiceImpl    : Saved 12 answers
+2025-12-30 11:50:57.771  INFO 7836 --- [http-nio-8080-exec-4] com.mbti.mbti.service.MbtiServiceImpl    : Fetching result with id: 3
+2025-12-30 11:55:45.685  INFO 7836 --- [http-nio-8080-exec-5] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/questions - Fetching all questions
+2025-12-30 11:55:45.686  INFO 7836 --- [http-nio-8080-exec-5] com.mbti.mbti.service.MbtiServiceImpl    : Fetching all questions
+2025-12-30 11:55:54.661  INFO 7836 --- [http-nio-8080-exec-7] c.mbti.mbti.controller.MbtiController    : POST /api/mbti/submit - Submitting test for user: 김길동
+2025-12-30 11:55:54.661  INFO 7836 --- [http-nio-8080-exec-7] com.mbti.mbti.service.MbtiServiceImpl    : Submitting test for user: 김길동
+2025-12-30 11:55:54.668  INFO 7836 --- [http-nio-8080-exec-7] com.mbti.mbti.service.MbtiServiceImpl    : Calculated MBTI type: ENTP
+2025-12-30 11:55:54.669  INFO 7836 --- [http-nio-8080-exec-7] com.mbti.mbti.service.MbtiServiceImpl    : Saved result with id: 4
+2025-12-30 11:55:54.679  INFO 7836 --- [http-nio-8080-exec-7] com.mbti.mbti.service.MbtiServiceImpl    : Saved 12 answers
+2025-12-30 11:55:54.679  INFO 7836 --- [http-nio-8080-exec-7] com.mbti.mbti.service.MbtiServiceImpl    : Fetching result with id: 4
+2025-12-30 11:58:42.342  INFO 7836 --- [http-nio-8080-exec-8] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/questions - Fetching all questions
+2025-12-30 11:58:42.342  INFO 7836 --- [http-nio-8080-exec-8] com.mbti.mbti.service.MbtiServiceImpl    : Fetching all questions
+2025-12-30 11:58:45.799  INFO 7836 --- [http-nio-8080-exec-2] c.mbti.mbti.controller.MbtiController    : POST /api/mbti/submit - Submitting test for user: 김길동
+2025-12-30 11:58:45.799  INFO 7836 --- [http-nio-8080-exec-2] com.mbti.mbti.service.MbtiServiceImpl    : Submitting test for user: 김길동
+2025-12-30 11:58:45.806  INFO 7836 --- [http-nio-8080-exec-2] com.mbti.mbti.service.MbtiServiceImpl    : Calculated MBTI type: ESTJ
+2025-12-30 11:58:45.807  INFO 7836 --- [http-nio-8080-exec-2] com.mbti.mbti.service.MbtiServiceImpl    : Saved result with id: 5
+2025-12-30 11:58:45.814  INFO 7836 --- [http-nio-8080-exec-2] com.mbti.mbti.service.MbtiServiceImpl    : Saved 12 answers
+2025-12-30 11:58:45.814  INFO 7836 --- [http-nio-8080-exec-2] com.mbti.mbti.service.MbtiServiceImpl    : Fetching result with id: 5
+2025-12-30 11:59:18.045  INFO 7836 --- [http-nio-8080-exec-3] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/questions - Fetching all questions
+2025-12-30 11:59:18.045  INFO 7836 --- [http-nio-8080-exec-3] com.mbti.mbti.service.MbtiServiceImpl    : Fetching all questions
+2025-12-30 11:59:20.902  INFO 7836 --- [http-nio-8080-exec-6] c.mbti.mbti.controller.MbtiController    : POST /api/mbti/submit - Submitting test for user: 김길동
+2025-12-30 11:59:20.903  INFO 7836 --- [http-nio-8080-exec-6] com.mbti.mbti.service.MbtiServiceImpl    : Submitting test for user: 김길동
+2025-12-30 11:59:20.910  INFO 7836 --- [http-nio-8080-exec-6] com.mbti.mbti.service.MbtiServiceImpl    : Calculated MBTI type: ESTJ
+2025-12-30 11:59:20.911  INFO 7836 --- [http-nio-8080-exec-6] com.mbti.mbti.service.MbtiServiceImpl    : Saved result with id: 6
+2025-12-30 11:59:20.919  INFO 7836 --- [http-nio-8080-exec-6] com.mbti.mbti.service.MbtiServiceImpl    : Saved 12 answers
+2025-12-30 11:59:20.919  INFO 7836 --- [http-nio-8080-exec-6] com.mbti.mbti.service.MbtiServiceImpl    : Fetching result with id: 6
+2025-12-30 14:03:58.584  WARN 7836 --- [MyHikariCP housekeeper] com.zaxxer.hikari.pool.HikariPool        : MyHikariCP - Thread starvation or clock leap detected (housekeeper delta=13m4s263ms418µs600ns).

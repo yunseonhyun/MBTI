@@ -1,0 +1,171 @@
+import 'dart:convert';
+
+import 'package:flutter/material.dart';
+import 'package:frontend/models/answer_model.dart';
+import 'package:frontend/models/test_request_model.dart';
+import 'package:http/http.dart' as http;
+
+import '../models/question_model.dart';
+import '../models/result_model.dart';
+
+  /* final에 비하여 const 가벼움
+  * 단기적으로 값 변경하지 못하도록 상수처리 할 때 = final
+  * 장기적으로 전체 공유하는 상수처리 값 = const
+  *
+  * const = 어플 전체적으로 사용되는 상수 명칭
+  * final = 특정 기능이나 특정 화면에서만 부분적으로 사용되는 상수 명칭
+  * */
+
+// models에 작성한 자료형 변수이름을 활용하여 데이터 타입 지정
+class ApiService {
+
+  static const String url = 'http://localhost:8080/api/mbti';
+
+  // 백엔드 컨트롤러에서 질문 가져오기
+  // 보통 백엔드나 외부 api 데이터를 가져올 때 자료형으로 Future 특정 자료형을 감싸서 사용
+
+  static Future<List<Question>> getQuestions() async {
+    final res = await http.get(Uri.parse('$url/questions'));
+  /*
+  http://localhost:8080/api/mbti/questions 로 접속했을 때 나오는 데이터
+   res.body = 백엔드에서 위 주소로 전달받은 JSON 문자열 -> 주소로 가져오는 데이터는 한 줄로 가져온다.
+   ‘[{“id”:1, “questionText”:“질문1”,”optionA”: “A”,”optionB”:”B”},{“id”:2, “questionText”:“질문2”,”optionA”: “A”,”optionB”:”B”}, {“id”:3, “questionText”:“질문3”,”optionA”: “A”,”optionB”:”B”}]’
+
+   json.decode() = 한줄로 되어있는 JSON 문자열 데이터를 Dart 형식의 객체로 변환해서 사용
+   map((json) => Question.fromJson(json)) = 변환을 할 때 각 데이터 하나씩 json이라는 변수이름에 담아서
+                                                     Question 객체로 변환작업을 첫 데이터부터 끝 데이터까지 모두 수행
+   .toList() = map으로 출력된 결과를 List 목록 형태로 변환하여 사용
+  */
+    if(res.statusCode == 200){
+      List<dynamic> jsonList = json.decode(res.body);
+
+      return jsonList.map((json) => Question.fromJson(json)).toList();
+    } else {
+      throw Exception('불러오기 실패');
+    }
+  }
+
+  // 결과 제출하기 post
+  /*
+  Map<int, String> answers = 소비자가 작성한 원본 데이터가 존재
+                             Map<int, String> answers = {
+                                1:'A',
+                                2:'B',
+                                3:'A'
+                                ...
+                             }
+   answers.entries = Map 을 MapEntry 리스트로 변환
+              결과 = [
+                      MapEntry(key: 1, value='A').
+                      MapEntry(key: 2, value='B').
+                      MapEntry(key: 3, value='A').
+                      ...
+                     ]
+   .map((en){                           = 각 MapEntry를 TestAnswer로 변환
+      return TestAnswer(
+          questionId: en.key,           // 1, 2, 3
+          selectedOption: en.value      // 'A', 'B', 'A'
+      );
+    })
+
+    .toList() = 최종 결과로 List 형태로 변환
+
+    MapEntry - Map의 키-값 쌍을 나타내는 객체
+    entry의 entries 반복문 형태
+
+    현재 우리가 작성한 백엔드에서 위와 같은 형식을 유지하고 있기 때문에
+    만약에 TestAnswer와 같은 응답전용 객체를 java에서 사용하지 않는다면 entries 작업까지 할 필요는 없음
+
+    Entry = DB 하나의 컬럼에 존재하는 데이터
+
+    사전 한권 = Map
+    사전의 각 항목 = Entry
+
+    책 사전 내부에 존재하는 예시 데이터
+     키       값
+    apple -> 사과       = entry 1개
+    banana -> 바나나    = entry 1개
+    cherry -> 체리      = entry 1개
+
+    총 entry = 개체 3개
+
+    Entries = 모든 entry 항목 종합
+              모든 키-값 쌍들
+
+    전화번호부 한 줄 :
+      이름(key) : 홍길동
+      전화번호(value) : 010-1234-5678
+
+    -> entry 1개 = 객체 1개의 데이터
+   */
+  static Future<Result> submitTest(String userName, Map<int, String> answers) async {
+    // 어플에서 선택한 답볍의 결과를 API 형식으로 변환
+    List<TestAnswer> answerList = answers.entries.map((en){
+      return TestAnswer(questionId: en.key, selectedOption: en.value);
+    }).toList();
+    // 어플에서 선택한 질문 번호와 질문에 대한 답변을 [{질문1, 답볍}, {질문2, 답볍}, {질문3, 답변}]
+
+    TestRequest request = TestRequest(userName: userName, answers: answerList);
+
+    final res = await http.post(
+        Uri.parse('$url/submit'),
+        headers: {'Content-Type':'application/json'},
+        body: json.encode(request.toJson())
+    );
+
+    if(res.statusCode == 200){
+      Map<String, dynamic> jsonData = json.decode(res.body);
+      return Result.fromJson(jsonData);
+    } else {
+      throw Exception('제출실패');
+    }
+  }
+}
+
+
+
+class DynamicApiService {
+
+  static const String url = 'http://localhost:8080/api/mbti';
+
+  // 백엔드 컨트롤러에서 질문 가져오기
+  // 보통 백엔드나 외부 api 데이터를 가져올 때 자료형으로 Future 특정 자료형을 감싸서 사용
+
+  static Future<List<dynamic>> getQuestions() async {
+    final res = await http.get(Uri.parse('$url/questions'));
+
+    if(res.statusCode == 200){
+      return json.decode(res.body);
+    } else {
+      throw Exception('불러오기 실패');
+    }
+  }
+
+  // 결과 제출하기 post
+  static Future<Map<String,dynamic>> submitTest(String userName, Map<int, String> answers) async {
+    // 어플에서 선택한 답볍의 결과를 API 형식으로 변환
+    List<Map<String, dynamic>> answerList = [];
+    // 어플에서 선택한 질문 번호와 질문에 대한 답변을 [{질문1, 답볍}, {질문2, 답볍}, {질문3, 답변}]
+    answers.forEach((questionId, option){
+      answerList.add({
+        'questionId' : questionId,
+        'selectedOption' : option
+      });
+    });
+
+    final res = await http.post(
+      Uri.parse('$url/submit'),
+      headers: {'Content-Type':'application/json'},
+      body: json.encode({
+        'userName':userName,
+        'answers':answerList
+      })
+    );
+
+    if(res.statusCode == 200){
+      return json.decode(res.body);
+    } else {
+      throw Exception('제출실패');
+    }
+  }
+}
