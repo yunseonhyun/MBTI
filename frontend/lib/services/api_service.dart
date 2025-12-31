@@ -123,6 +123,26 @@ class ApiService {
 }
 
 
+/*
+Map<String, dynamic> jsonData = json.decode(res.body);
+String = 키 명칭들은 문자열로 확정!
+<String    ,    dynamic>
+  "id"             1           숫자
+"userName"      "강감찬"      문자열
+"resultType"     "ENFP"       문자열
+"isActive"        true        불리언
+"createdAt"       null         null
+"scores"         [2,3,1,..]    List
+
+dynamic 대신에 Object 사용하면 안되나요? 안돼요.
+Object에는 null 불가능
+   └───────── Dart Object 타입은 null 불가능 컴파일에서는 연산 불가 2.1.2부터 null 사용 금지이고 dynamic 써라
+        └───────── Java Object 타입은 null 가능
+dynamic은 null 가능
+   └───────── 컴파일에서는 우선 타입이 무엇인지??? 상태로 일단 ok
+        └───────── 실행하면서 타입이 맞지 않으면 에러 발생
+ */
+
 
 class DynamicApiService {
 

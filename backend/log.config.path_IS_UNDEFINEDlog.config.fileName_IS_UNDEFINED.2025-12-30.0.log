@@ -107,3 +107,6 @@
 2025-12-30 11:59:20.919  INFO 7836 --- [http-nio-8080-exec-6] com.mbti.mbti.service.MbtiServiceImpl    : Saved 12 answers
 2025-12-30 11:59:20.919  INFO 7836 --- [http-nio-8080-exec-6] com.mbti.mbti.service.MbtiServiceImpl    : Fetching result with id: 6
 2025-12-30 14:03:58.584  WARN 7836 --- [MyHikariCP housekeeper] com.zaxxer.hikari.pool.HikariPool        : MyHikariCP - Thread starvation or clock leap detected (housekeeper delta=13m4s263ms418µs600ns).
+2025-12-30 18:11:57.394  WARN 7836 --- [MyHikariCP housekeeper] com.zaxxer.hikari.pool.HikariPool        : MyHikariCP - Thread starvation or clock leap detected (housekeeper delta=2h8m27s74ms417µs100ns).
+2025-12-30 18:12:02.665  INFO 7836 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : MyHikariCP - Shutdown initiated...
+2025-12-30 18:12:02.672  INFO 7836 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : MyHikariCP - Shutdown completed.

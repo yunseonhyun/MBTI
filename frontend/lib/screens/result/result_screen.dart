@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 
 // result 스크린에서 채팅을 하거나, 숫자값을 추가하거나 실질적으로 화면 자체에서 변경되는 데이터가 없으므로
 // statelessWidget으로 작성 가능하다.
-class ResultScreen extends StatefulWidget {
+class ResultScreen extends StatelessWidget {
   final String userName;
   final String resultType;
 
@@ -13,11 +13,11 @@ class ResultScreen extends StatefulWidget {
     required this.resultType,
   });
 
-  @override
-  State<ResultScreen> createState() => _ResultScreenState();
-}
 
-class _ResultScreenState extends State<ResultScreen> {
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,12 +56,12 @@ class _ResultScreenState extends State<ResultScreen> {
                 child: Column(
                   children: [
                     // '${widget.userName}님의 MBTI는' 텍스트
-                    Text('${widget.userName}님의 MBTI는'),
+                    Text('${userName}님의 MBTI는'),
                     SizedBox(height: 20),
 
                     // MBTI 결과 (큰 글씨로)
                     // widget.resultType 사용
-                    Text('${widget.resultType}'),
+                    Text('${resultType}'),
 
                     SizedBox(height: 10),
 
