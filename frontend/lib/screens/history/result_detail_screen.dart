@@ -1,19 +1,159 @@
 import 'package:flutter/material.dart';
-
+import 'package:frontend/models/result_model.dart';
+import 'package:frontend/services/api_service.dart';
+import 'package:go_router/go_router.dart';
+/*
+* 과제 : less로 변경하기
+*
+* */
 class ResultDetailScreen extends StatefulWidget {
-  const ResultDetailScreen({super.key});
+  /*
+    GoRoute(
+    path: '/history',
+    builder: (context, state){
+    final userName = state.extra as String;
 
-  @override
+    *//*
+              생성된 객체를 사용할 수는 있으나, 매개변수는 존재하지 않은 상태
+              단순히 화면만 보여주는 형태
+              const TestScreen({super.key});
+               *//*
+    // return ResultDetailScreen(userName:state.extra as String);
+    //                       required   final userName
+    return ResultDetailScreen(userName:userName);
+    }
+    ),
+    /history라는 명칭으로 ResultDetailScreen widget 화면을 보려할 때,
+    메인에서 작성한 명칭의 유저 MBTI 확인하고자 하나,
+    const ResultDetailScreen({super.key}); 와 같이 작성할 경우에는
+    기본 생성자이며, 매개변수 데이터를 전달받은 생성자가 아니기 때문에
+    main.dart에서 작성한 사용자 이름을 전달받지 못하는 상황이 발생
+
+    자바랑 다르게 생성자를 기본생성자, 매개변수생성자 다수의 생성자를 만들 경우
+    반드시 생성자마다 명칭을 다르게 설정하며
+    보통은 클래스이름.기본생성자({super.key});
+           클래스이름.매개변수생성자({super.key, required this 전달받아_사용할_변수이름});
+  */
+  final String userName;
+  const ResultDetailScreen({super.key, required this.userName});
+
+  @override // 화면상태와 화면에서 상태 변경을 위한 위젯을 구분하여 만든 후 사용
   State<ResultDetailScreen> createState() => _ResultDetailScreenState();
 }
 
 class _ResultDetailScreenState extends State<ResultDetailScreen> {
+  // 변수 선언 기능 선언을 주로 작성
+  List<Result> results = [];
+  bool isLoading = true;
+
+
+  @override // 기본적으로 초기상태를 생성하며, 추가적으로 호출할 기능도 함께 작성하기 위해 재사용
+  void initState() {
+    super.initState();
+    loadResults();
+  } // 변수 사용 가능 선언 가능하지만 되도록이면 화면에 해당하는 ui 작성
+  // 상태 변경이 필요한 변수 사용
+
+  // 유저이름에 따른 결과
+  void loadResults() async { // ResultDetailScreen extends StatefulWidget 선언한 userName
+    // apiservice에서 만든 기능 호출하여 백엔드 결과를 가져오는 기능
+    // data = 지역변수 = {}를 탈출할 경우 변수의 의미가 소멸된다.
+    try{
+      final data = await ApiService.getResultsByUserName(widget.userName);
+      setState(() {
+        // results = 전역번수로 Widget build에 접근할 수 있는 변수 공간
+        results = data;
+        isLoading = false;
+      });
+  } catch (e) {
+      setState(() {
+        isLoading = false;
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("결과를 불러오지 못했습니다."))
+      );
+    }
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('result_detail_screen is working'),
+      appBar: AppBar(
+        title: Text('${widget.userName}님의 검사 기록'),
+        leading: IconButton(onPressed: () => context.go('/'),
+            icon: Icon(Icons.arrow_back)),
       ),
+      body: isLoading
+        ? Center(child: CircularProgressIndicator())
+      // ListViewBuilder는 itemCount가 없으면
+      // 내부 목록 리스트를 몇 개 만들어야 하는지 예상할 수 없으므로
+      // RangeError 발생
+          : ListView.builder(
+          padding: EdgeInsets.all(16),
+          itemCount: results.length,
+          itemBuilder: (context, index){
+            final r = results[index];
+            return Card(
+              child: ListTile(
+                // 숙소 메인 이미지
+                leading: CircleAvatar(
+                  backgroundColor: Colors.blue,
+                  child:  Text(r.resultType, style: TextStyle(color:Colors.white),
+                  ),
+                ),
+                // 숙소 이름
+                title: Text(r.resultType, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                // 예약 기본정보
+                subtitle: Text('E:${r.eScore} I:${r.iScore} S:${r.sScore} N:${r.nScore} \n'
+                    'T:${r.tScore} F:${r.fScore} J:${r.jScore} P:${r.pScore}'),
+                // 클릭하면 보인다라는 아이콘 형태의 모형
+                trailing: Icon(Icons.arrow_forward_ios),
+                // 한 줄의 어떤 곳을 선택하더라도 세부 정보를 확인할 수 있는 모달 창 띄우기
+                // 예약 세부 내용이 담긴 모달창
+                onTap: (){
+                  showDialog(context: context,
+                      builder: (context) => AlertDialog(
+                        title: Text(r.resultType),
+                        content: Text('${r.typeName ?? r.resultType} \n\n ${r.description ?? "정보 없음"}'),
+                        actions: [
+                          TextButton(onPressed: () => Navigator.pop(context), child: Text('닫기'))
+                        ],
+                      ));
+                },
+              ),
+            );
+          }
+      )
     );
   }
 }
+
+/*
+개발자가 하나하나 직접적으로 목록을 작성해야할 경우 사용
+-> 목차 목록리스트 네비게이션 리스트
+ListView(
+        children: [
+          Text('ABCD'),
+          Text('EFGH'),
+          Text('IJKM'),
+        ],
+      )
+개발자가 DB에서 데이터를 동적으로 가져올 때는
+ListView.builder(
+  itemCount: 총개수,
+  itemBuilder: (context,index){
+    return Text('항목 $index')
+  }
+)
+
+RangeError(length): Invalid value: Only valid value is 0: 1
+-> 검사 기록이 비어있는지 확인
+
+// ListViewBuilder는 itemCount가 없으면
+// 내부 목록 리스트를 몇 개 만들어야 하는지 예상할 수 없으므로
+// RangeError 발생
+
+검사기록이 0개 일 때 발생할 것
+isEmpty인 경우도 해결 UI를 넣어줘야 한다.
+ */

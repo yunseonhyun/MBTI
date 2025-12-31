@@ -1,0 +1,24 @@
+2025-12-31 09:33:19.522  INFO 16152 --- [restartedMain] com.mbti.BackendApplication              : Starting BackendApplication using Java 21.0.8 with PID 16152 (C:\Users\TJ\Desktop\Project\MBTI\backend\build\classes\java\main started by TJ in C:\Users\TJ\Desktop\Project\MBTI\backend)
+2025-12-31 09:33:19.524  INFO 16152 --- [restartedMain] com.mbti.BackendApplication              : No active profile set, falling back to 1 default profile: "default"
+2025-12-31 09:33:19.580  INFO 16152 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-12-31 09:33:19.580  INFO 16152 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-12-31 09:33:21.212  INFO 16152 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-12-31 09:33:21.230  INFO 16152 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-31 09:33:21.231  INFO 16152 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.17]
+2025-12-31 09:33:21.323  INFO 16152 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-31 09:33:21.324  INFO 16152 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1743 ms
+2025-12-31 09:33:22.393  INFO 16152 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-12-31 09:33:22.435  INFO 16152 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-12-31 09:33:22.445  INFO 16152 --- [restartedMain] com.mbti.BackendApplication              : Started BackendApplication in 3.632 seconds (process running for 5.034)
+2025-12-31 10:32:35.077  INFO 16152 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-31 10:32:35.077  INFO 16152 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-31 10:32:35.078  INFO 16152 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-12-31 10:32:35.115  INFO 16152 --- [http-nio-8080-exec-1] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/results - Fetching results for user: 홍길동
+2025-12-31 10:32:35.116  INFO 16152 --- [http-nio-8080-exec-1] com.mbti.mbti.service.MbtiServiceImpl    : Fetching results for user: 홍길동
+2025-12-31 10:32:35.134  INFO 16152 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : MyHikariCP - Starting...
+2025-12-31 10:32:35.375  INFO 16152 --- [http-nio-8080-exec-1] com.zaxxer.hikari.pool.HikariPool        : MyHikariCP - Added connection org.postgresql.jdbc.PgConnection@49060bf5
+2025-12-31 10:32:35.377  INFO 16152 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : MyHikariCP - Start completed.
+2025-12-31 10:44:29.142  INFO 16152 --- [http-nio-8080-exec-3] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/results - Fetching results for user: 홍길동
+2025-12-31 10:44:29.142  INFO 16152 --- [http-nio-8080-exec-3] com.mbti.mbti.service.MbtiServiceImpl    : Fetching results for user: 홍길동
+2025-12-31 10:45:02.443  INFO 16152 --- [http-nio-8080-exec-5] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/results - Fetching results for user: 홍길동
+2025-12-31 10:45:02.443  INFO 16152 --- [http-nio-8080-exec-5] com.mbti.mbti.service.MbtiServiceImpl    : Fetching results for user: 홍길동
