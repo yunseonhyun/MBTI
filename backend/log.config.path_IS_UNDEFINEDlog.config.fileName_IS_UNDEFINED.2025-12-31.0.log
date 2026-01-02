@@ -22,3 +22,62 @@
 2025-12-31 10:44:29.142  INFO 16152 --- [http-nio-8080-exec-3] com.mbti.mbti.service.MbtiServiceImpl    : Fetching results for user: 홍길동
 2025-12-31 10:45:02.443  INFO 16152 --- [http-nio-8080-exec-5] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/results - Fetching results for user: 홍길동
 2025-12-31 10:45:02.443  INFO 16152 --- [http-nio-8080-exec-5] com.mbti.mbti.service.MbtiServiceImpl    : Fetching results for user: 홍길동
+2025-12-31 11:10:36.894  INFO 16152 --- [http-nio-8080-exec-7] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/results - Fetching results for user: 홍길돌
+2025-12-31 11:10:36.895  INFO 16152 --- [http-nio-8080-exec-7] com.mbti.mbti.service.MbtiServiceImpl    : Fetching results for user: 홍길돌
+2025-12-31 11:10:42.484  INFO 16152 --- [http-nio-8080-exec-9] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/results - Fetching results for user: 홍길동
+2025-12-31 11:10:42.485  INFO 16152 --- [http-nio-8080-exec-9] com.mbti.mbti.service.MbtiServiceImpl    : Fetching results for user: 홍길동
+2025-12-31 11:10:47.927  INFO 16152 --- [http-nio-8080-exec-1] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/results - Fetching results for user: 나
+2025-12-31 11:10:47.927  INFO 16152 --- [http-nio-8080-exec-1] com.mbti.mbti.service.MbtiServiceImpl    : Fetching results for user: 나
+2025-12-31 11:40:45.399  INFO 16152 --- [http-nio-8080-exec-3] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/results - Fetching results for user: 나
+2025-12-31 11:40:45.400  INFO 16152 --- [http-nio-8080-exec-3] com.mbti.mbti.service.MbtiServiceImpl    : Fetching results for user: 나
+2025-12-31 11:44:26.228  INFO 16152 --- [http-nio-8080-exec-5] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/types - Fetching all MBTI types
+2025-12-31 11:44:26.228  INFO 16152 --- [http-nio-8080-exec-5] com.mbti.mbti.service.MbtiServiceImpl    : Fetching all MBTI types
+2025-12-31 12:32:25.870  INFO 16152 --- [http-nio-8080-exec-7] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/questions - Fetching all questions
+2025-12-31 12:32:25.873  INFO 16152 --- [http-nio-8080-exec-7] com.mbti.mbti.service.MbtiServiceImpl    : Fetching all questions
+2025-12-31 12:32:32.404  INFO 16152 --- [http-nio-8080-exec-9] c.mbti.mbti.controller.MbtiController    : POST /api/mbti/submit - Submitting test for user: 대방어
+2025-12-31 12:32:32.417  INFO 16152 --- [http-nio-8080-exec-9] com.mbti.mbti.service.MbtiServiceImpl    : Submitting test for user: 대방어
+2025-12-31 12:32:32.433  INFO 16152 --- [http-nio-8080-exec-9] com.mbti.mbti.service.MbtiServiceImpl    : Calculated MBTI type: ESFP
+2025-12-31 12:32:32.462  INFO 16152 --- [http-nio-8080-exec-9] com.mbti.mbti.service.MbtiServiceImpl    : Saved result with id: 7
+2025-12-31 12:32:32.496  INFO 16152 --- [http-nio-8080-exec-9] com.mbti.mbti.service.MbtiServiceImpl    : Saved 12 answers
+2025-12-31 12:32:32.496  INFO 16152 --- [http-nio-8080-exec-9] com.mbti.mbti.service.MbtiServiceImpl    : Fetching result with id: 7
+2025-12-31 12:45:07.802  INFO 16152 --- [http-nio-8080-exec-1] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/questions - Fetching all questions
+2025-12-31 12:45:07.802  INFO 16152 --- [http-nio-8080-exec-1] com.mbti.mbti.service.MbtiServiceImpl    : Fetching all questions
+2025-12-31 12:45:11.988  INFO 16152 --- [http-nio-8080-exec-3] c.mbti.mbti.controller.MbtiController    : POST /api/mbti/submit - Submitting test for user: 참돔
+2025-12-31 12:45:11.989  INFO 16152 --- [http-nio-8080-exec-3] com.mbti.mbti.service.MbtiServiceImpl    : Submitting test for user: 참돔
+2025-12-31 12:45:11.995  INFO 16152 --- [http-nio-8080-exec-3] com.mbti.mbti.service.MbtiServiceImpl    : Calculated MBTI type: INFP
+2025-12-31 12:45:11.996  INFO 16152 --- [http-nio-8080-exec-3] com.mbti.mbti.service.MbtiServiceImpl    : Saved result with id: 8
+2025-12-31 12:45:12.006  INFO 16152 --- [http-nio-8080-exec-3] com.mbti.mbti.service.MbtiServiceImpl    : Saved 12 answers
+2025-12-31 12:45:12.007  INFO 16152 --- [http-nio-8080-exec-3] com.mbti.mbti.service.MbtiServiceImpl    : Fetching result with id: 8
+2025-12-31 12:51:56.815  INFO 16152 --- [http-nio-8080-exec-5] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/types - Fetching all MBTI types
+2025-12-31 12:51:56.817  INFO 16152 --- [http-nio-8080-exec-5] com.mbti.mbti.service.MbtiServiceImpl    : Fetching all MBTI types
+2025-12-31 12:55:42.487  INFO 16152 --- [http-nio-8080-exec-7] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/types - Fetching all MBTI types
+2025-12-31 12:55:42.488  INFO 16152 --- [http-nio-8080-exec-7] com.mbti.mbti.service.MbtiServiceImpl    : Fetching all MBTI types
+2025-12-31 12:56:12.605  INFO 16152 --- [http-nio-8080-exec-9] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/questions - Fetching all questions
+2025-12-31 12:56:12.605  INFO 16152 --- [http-nio-8080-exec-9] com.mbti.mbti.service.MbtiServiceImpl    : Fetching all questions
+2025-12-31 12:56:18.713  INFO 16152 --- [http-nio-8080-exec-1] c.mbti.mbti.controller.MbtiController    : POST /api/mbti/submit - Submitting test for user: 유재석
+2025-12-31 12:56:18.713  INFO 16152 --- [http-nio-8080-exec-1] com.mbti.mbti.service.MbtiServiceImpl    : Submitting test for user: 유재석
+2025-12-31 12:56:18.717  INFO 16152 --- [http-nio-8080-exec-1] com.mbti.mbti.service.MbtiServiceImpl    : Calculated MBTI type: ISFP
+2025-12-31 12:56:18.718  INFO 16152 --- [http-nio-8080-exec-1] com.mbti.mbti.service.MbtiServiceImpl    : Saved result with id: 9
+2025-12-31 12:56:18.725  INFO 16152 --- [http-nio-8080-exec-1] com.mbti.mbti.service.MbtiServiceImpl    : Saved 12 answers
+2025-12-31 12:56:18.725  INFO 16152 --- [http-nio-8080-exec-1] com.mbti.mbti.service.MbtiServiceImpl    : Fetching result with id: 9
+2025-12-31 12:59:25.993  INFO 16152 --- [http-nio-8080-exec-3] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/questions - Fetching all questions
+2025-12-31 12:59:25.993  INFO 16152 --- [http-nio-8080-exec-3] com.mbti.mbti.service.MbtiServiceImpl    : Fetching all questions
+2025-12-31 12:59:30.378  INFO 16152 --- [http-nio-8080-exec-5] c.mbti.mbti.controller.MbtiController    : POST /api/mbti/submit - Submitting test for user: 우럭
+2025-12-31 12:59:30.379  INFO 16152 --- [http-nio-8080-exec-5] com.mbti.mbti.service.MbtiServiceImpl    : Submitting test for user: 우럭
+2025-12-31 12:59:30.385  INFO 16152 --- [http-nio-8080-exec-5] com.mbti.mbti.service.MbtiServiceImpl    : Calculated MBTI type: ENFP
+2025-12-31 12:59:30.386  INFO 16152 --- [http-nio-8080-exec-5] com.mbti.mbti.service.MbtiServiceImpl    : Saved result with id: 10
+2025-12-31 12:59:30.394  INFO 16152 --- [http-nio-8080-exec-5] com.mbti.mbti.service.MbtiServiceImpl    : Saved 12 answers
+2025-12-31 12:59:30.394  INFO 16152 --- [http-nio-8080-exec-5] com.mbti.mbti.service.MbtiServiceImpl    : Fetching result with id: 10
+2025-12-31 13:12:44.904  INFO 16152 --- [http-nio-8080-exec-7] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/questions - Fetching all questions
+2025-12-31 13:12:44.904  INFO 16152 --- [http-nio-8080-exec-7] com.mbti.mbti.service.MbtiServiceImpl    : Fetching all questions
+2025-12-31 13:12:50.447  INFO 16152 --- [http-nio-8080-exec-9] c.mbti.mbti.controller.MbtiController    : POST /api/mbti/submit - Submitting test for user: 손오공
+2025-12-31 13:12:50.448  INFO 16152 --- [http-nio-8080-exec-9] com.mbti.mbti.service.MbtiServiceImpl    : Submitting test for user: 손오공
+2025-12-31 13:12:50.455  INFO 16152 --- [http-nio-8080-exec-9] com.mbti.mbti.service.MbtiServiceImpl    : Calculated MBTI type: ESFJ
+2025-12-31 13:12:50.459  INFO 16152 --- [http-nio-8080-exec-9] com.mbti.mbti.service.MbtiServiceImpl    : Saved result with id: 11
+2025-12-31 13:12:50.472  INFO 16152 --- [http-nio-8080-exec-9] com.mbti.mbti.service.MbtiServiceImpl    : Saved 12 answers
+2025-12-31 13:12:50.472  INFO 16152 --- [http-nio-8080-exec-9] com.mbti.mbti.service.MbtiServiceImpl    : Fetching result with id: 11
+2025-12-31 14:07:51.858  WARN 16152 --- [MyHikariCP housekeeper] com.zaxxer.hikari.pool.HikariPool        : MyHikariCP - Thread starvation or clock leap detected (housekeeper delta=17m43s251ms911µs100ns).
+2025-12-31 14:29:11.547  INFO 16152 --- [http-nio-8080-exec-1] c.mbti.mbti.controller.MbtiController    : GET /api/mbti/types - Fetching all MBTI types
+2025-12-31 14:29:11.547  INFO 16152 --- [http-nio-8080-exec-1] com.mbti.mbti.service.MbtiServiceImpl    : Fetching all MBTI types
+2025-12-31 15:10:17.413  INFO 16152 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : MyHikariCP - Shutdown initiated...
+2025-12-31 15:10:17.413  INFO 16152 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : MyHikariCP - Shutdown completed.

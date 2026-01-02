@@ -4,7 +4,10 @@ import 'package:frontend/screens/history/result_detail_screen.dart';
 import 'package:frontend/screens/home/home_screen.dart';
 import 'package:frontend/screens/result/result_screen.dart';
 import 'package:frontend/screens/test/test_screen.dart';
+import 'package:frontend/screens/types/mbti_types_screen.dart';
 import 'package:go_router/go_router.dart';
+
+import 'models/result_model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,16 +37,28 @@ final GoRouter _router = GoRouter(
       GoRoute(
           path: '/result',
           builder: (context, state){
-            final data = state.extra as Map<String, dynamic>;
+            // final data = state.extra as Map<String, dynamic>;
+            final result = state.extra as Result;
 
             /*
             생성된 객체를 사용할 수는 있으나, 매개변수는 존재하지 않은 상태
             단순히 화면만 보여주는 형태
             const TestScreen({super.key});
              */
-            return ResultScreen(userName: data['userName']!,
-            resultType: data['resultType']!
+           /* return ResultScreen(
+                userName: data['userName']!,
+            resultType: data['resultType']!,
+            eScore: data['eScore']!,
+            iScore: data['iScore']!,
+            sScore: data['sScore']!,
+            nScore: data['nScore']!,
+            tScore: data['tScore']!,
+            fScore: data['fScore']!,
+            jScore: data['jScore']!,
+            pScore: data['pScore']!
             );
+            */
+            return ResultScreen(result: result);
           }
       ),
       GoRoute(
@@ -60,6 +75,10 @@ final GoRouter _router = GoRouter(
             //                       required   final userName
             return ResultDetailScreen(userName:userName);
           }
+      ),
+      GoRoute(
+          path: '/types',
+          builder: (context, state) => MbtiTypesScreen()
       ),
     ]
 );

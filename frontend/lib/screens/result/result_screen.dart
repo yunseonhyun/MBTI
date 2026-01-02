@@ -1,23 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../models/result_model.dart';
+import '../../widgets/score_bar.dart';
+
 // result 스크린에서 채팅을 하거나, 숫자값을 추가하거나 실질적으로 화면 자체에서 변경되는 데이터가 없으므로
 // statelessWidget으로 작성 가능하다.
-class ResultScreen extends StatelessWidget {
-  final String userName;
-  final String resultType;
+// SingleChildScrollView -> 화면은 움직이는 화면이기 때문에 less 사용 불가
+
+// 과제 : 로딩중 화면 메세지 없이 import 하여 개발자가 원하는 보인 방식대로 추가
+class ResultScreen extends StatefulWidget {
+  final Result result;
 
   const ResultScreen({
     super.key,
-    required this.userName,
-    required this.resultType,
-  });
+    required this.result
+});
+/*
+  final String userName;
+  final String resultType;
+  final int eScore;
+  final int iScore;
+  final int sScore;
+  final int nScore;
+  final int tScore;
+  final int fScore;
+  final int jScore;
+  final int pScore;
+  */
 
 
 
+  @override
+  State<ResultScreen> createState() => _ResultScreenState();
 
+}
 
-
+class _ResultScreenState extends State<ResultScreen> {
+  bool isLoading = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,19 +46,20 @@ class ResultScreen extends StatelessWidget {
         automaticallyImplyLeading: false,  // 뒤로가기 버튼 숨김
       ),
       body: Center(
-        child: Padding(
+        /*
+        * SingleChildScrollView -> ListView
+        *
+        * */
+        child: SingleChildScrollView(
           padding: EdgeInsets.all(20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
                 Icons.celebration,
-                size: 100,
+                size: 20,
                 color: Colors.amber,
               ),
-
-
-              SizedBox(height: 30),
 
               Text('검사 완료',
                   style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold)
@@ -48,20 +69,22 @@ class ResultScreen extends StatelessWidget {
               SizedBox(height: 40),
 
               Container(
+                width: double.infinity,
                 // 여기를 채우세요!
-                padding: EdgeInsets.all(30),
-                decoration: BoxDecoration(color: Colors.blue,
+                padding: EdgeInsets.symmetric(vertical: 40, horizontal: 30),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(color: Colors.blue, width: 2)),
                 child: Column(
                   children: [
                     // '${widget.userName}님의 MBTI는' 텍스트
-                    Text('${userName}님의 MBTI는'),
+                    Text('${widget.result.userName}님의 MBTI는'),
                     SizedBox(height: 20),
 
                     // MBTI 결과 (큰 글씨로)
                     // widget.resultType 사용
-                    Text('${resultType}'),
+                    Text('${widget.result.resultType}'),
 
                     SizedBox(height: 10),
 
@@ -72,6 +95,56 @@ class ResultScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 60),
+              /*
+              * 패딩 상하좌우 20
+              * 글자색상 회색[50]
+              * 모서리 둥글기 15
+              * 실선 회색 300 계열
+              * Column은 crossAxiosAlignment start로 주기
+              *
+              * border: Border.all(color: Colors.grey[300]!)
+              * */
+
+              Container(
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.grey[50],
+                  borderRadius: BorderRadius.circular(15),
+                  border: Border.all(color: Colors.grey[300]!)
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('상세 점수'),
+                    SizedBox(height: 16),
+                    ScoreBar(
+                      label1: 'E(외향)',
+                      label2: 'I(내향)',
+                      score1: widget.result.eScore,
+                      score2: widget.result.iScore,
+                    ),
+                    ScoreBar(
+                      label1: 'S(감각)',
+                      label2: 'N(직관)',
+                      score1: widget.result.sScore,
+                      score2: widget.result.nScore,
+                    ),
+                    ScoreBar(
+                      label1: 'T(사고)',
+                      label2: 'F(감정)',
+                      score1: widget.result.tScore,
+                      score2: widget.result.fScore,
+                    ),
+                    ScoreBar(
+                      label1: 'J(판단)',
+                      label2: 'P(인식)',
+                      score1: widget.result.jScore,
+                      score2: widget.result.pScore,
+                    ),
+                  ],
+                )
+              ),
+
               SizedBox(
                 width: 300,
                 height: 50,

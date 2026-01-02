@@ -4,6 +4,7 @@ import 'package:frontend/services/api_service.dart';
 import 'package:go_router/go_router.dart';
 /*
 * 과제 : less로 변경하기
+* 과제 : ErrorView 추가 errorMessage = "검사 기록을 불러오는데 실패했습니다."
 *
 * */
 class ResultDetailScreen extends StatefulWidget {
@@ -89,6 +90,10 @@ class _ResultDetailScreenState extends State<ResultDetailScreen> {
       // ListViewBuilder는 itemCount가 없으면
       // 내부 목록 리스트를 몇 개 만들어야 하는지 예상할 수 없으므로
       // RangeError 발생
+      :results.isEmpty
+        ? Center(
+        child: Text('검사 기록이 없습니다.', style: TextStyle(fontSize: 18))
+      )
           : ListView.builder(
           padding: EdgeInsets.all(16),
           itemCount: results.length,
