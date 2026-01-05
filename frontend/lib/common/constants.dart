@@ -38,12 +38,14 @@ ErrorMessages - 사용자에게 표시할 오류 메세지
 
  */
 class ApiConstants {
-  static const String baseUrl = 'http://localhost:8080/api/mbti';
-  static const String submit = '/submit';
-  static const String result = '/result';
-  static const String results = '/results';
-  static const String types = '/types';
-  static const String health = '/health';
+  static const String baseUrl = 'http://localhost:8080/api';
+  static const String mbtiUrl = '/mbti';
+  static const String userUrl = '/users';
+  static const String submit = '$mbtiUrl/submit';
+  static const String result = '$mbtiUrl/result';
+  static const String results = '$mbtiUrl/results';
+  static const String types = '$mbtiUrl/types';
+  static const String health = '$mbtiUrl/health';
 
 }
 class AppConstants{

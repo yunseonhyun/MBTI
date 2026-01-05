@@ -9,6 +9,7 @@ import 'package:http/http.dart' as http;
 import '../models/mbti_type_model.dart';
 import '../models/question_model.dart';
 import '../models/result_model.dart';
+import '../models/user_model.dart';
 
   /* final에 비하여 const 가벼움
   * 단기적으로 값 변경하지 못하도록 상수처리 할 때 = final
@@ -22,12 +23,38 @@ import '../models/result_model.dart';
 class ApiService {
   // 상태관리가 된 url 주소 호출
   static const String url = ApiConstants.baseUrl;
-
+  static const String mbti = ApiConstants.mbtiUrl;
   // 백엔드 컨트롤러에서 질문 가져오기
   // 보통 백엔드나 외부 api 데이터를 가져올 때 자료형으로 Future 특정 자료형을 감싸서 사용
 
+// ====================== 사용자 관련 API =======================
+  static Future<User> login(String userName) async {
+    final res = await http.post(
+      Uri.parse('$url${ApiConstants.userUrl}'),
+      headers: {'Content=Type':'application/json'},
+      body: json.encode({'userName':userName})
+    );
+
+    if(res.statusCode == 200){
+      Map<String, dynamic> jsonData = json.decode(res.body);
+      return User.fromJson(jsonData);
+    } else {
+      throw Exception(ErrorMessages.submitFailed);
+    }
+  }
+
+  // 사용자명으로 사용자 조회
+  // static Future<User?> getUserByUserName(String userName)
+
+  // 모든 사용자 조회
+  // static Future<List<User>> getAllUsers()
+
+
+
+
+  // ====================== 질문 관련 API =======================
   static Future<List<Question>> getQuestions() async {
-    final res = await http.get(Uri.parse('$url/questions'));
+    final res = await http.get(Uri.parse('$url$mbti/questions'));
   /*
   http://localhost:8080/api/mbti/questions 로 접속했을 때 나오는 데이터
    res.body = 백엔드에서 위 주소로 전달받은 JSON 문자열 -> 주소로 가져오는 데이터는 한 줄로 가져온다.
@@ -47,6 +74,8 @@ class ApiService {
     }
   }
 
+
+  // ====================== 검사 제출 API =======================
   // 결과 제출하기 post
   /*
   Map<int, String> answers = 소비자가 작성한 원본 데이터가 존재
@@ -100,29 +129,29 @@ class ApiService {
 
     -> entry 1개 = 객체 1개의 데이터
    */
-  static Future<Result> submitTest(String userName, Map<int, String> answers) async {
-    // 어플에서 선택한 답볍의 결과를 API 형식으로 변환
-    List<TestAnswer> answerList = answers.entries.map((en){
+  static Future<Result> submitTest(
+      String userName,
+      Map<int, String> answers,
+      ) async {
+    List<TestAnswer> answerList = answers.entries.map((en) {
       return TestAnswer(questionId: en.key, selectedOption: en.value);
     }).toList();
-    // 어플에서 선택한 질문 번호와 질문에 대한 답변을 [{질문1, 답볍}, {질문2, 답볍}, {질문3, 답변}]
 
     TestRequest request = TestRequest(userName: userName, answers: answerList);
 
     final res = await http.post(
-        Uri.parse('$url/submit'),
-        headers: {'Content-Type':'application/json'},
-        body: json.encode(request.toJson())
+      Uri.parse('$url$mbti/submit'),
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode(request.toJson()),
     );
-
-    if(res.statusCode == 200){
+    if (res.statusCode == 200) {
       Map<String, dynamic> jsonData = json.decode(res.body);
       return Result.fromJson(jsonData);
     } else {
-      throw Exception(ErrorMessages.submitFailed);
+      throw Exception('제출 실패');
     }
   }
-  
+
   // 사용자별 결과 조회 - ㅇㅇㅇ 이름에 해당하는 모든 데이터 목록 조회
   /*
     사용자별 결과 조회
@@ -134,7 +163,7 @@ class ApiService {
     ${변수이름.세부기능()} {}로 감싸서 작성
    */
   static Future<List<Result>> getResultsByUserName(String userName) async {
-      final res = await http.get(Uri.parse('$url${ApiConstants.types}'));
+      final res = await http.get(Uri.parse('$url/${ApiConstants.types}'));
 
       if(res.statusCode == 200) {
         List<dynamic> jsonList = json.decode(res.body);
@@ -147,7 +176,7 @@ class ApiService {
 
   // 모든 MBTI 유형 조회
   static Future<List<MbtiType>> getAllMbtiTypes() async {
-    final res = await http.get(Uri.parse('$url/types'));
+    final res = await http.get(Uri.parse('$url$mbti/types'));
 
     if(res.statusCode == 200) {
       List<dynamic> jsonList = json.decode(res.body);
@@ -159,7 +188,7 @@ class ApiService {
 
 // 특정 MBTI 유형 조회
   static Future<MbtiType> getMbtiTypeByCode(String typeCode) async {
-    final res = await http.get(Uri.parse('$url${ApiConstants.types}'));
+    final res = await http.get(Uri.parse('$url/${ApiConstants.types}'));
 
     if(res.statusCode == 200) {
       Map<String, dynamic> jsonData = json.decode(res.body);
@@ -175,7 +204,7 @@ class ApiService {
   // http.get
   // Map<String, dynamic>
   static Future<Result> getResultsById(String id) async {
-    final res = await http.get(Uri.parse('$url${ApiConstants.result}/$id'));
+    final res = await http.get(Uri.parse('$url/${ApiConstants.result}/$id'));
 
     if(res.statusCode == 200) {
       Map<String, dynamic> jsonData = json.decode(res.body);
@@ -194,7 +223,7 @@ class ApiService {
   // final res
   // Future 예상결과로 백엔드에서 진행한 결과에 대한 return 없이 기능만 수행할 것
   static Future<void> deleteResult(int id) async {
-    final res = await http.get(Uri.parse('$url${ApiConstants.result}/$id'));
+    final res = await http.get(Uri.parse('$url/${ApiConstants.result}/$id'));
 
     if(res.statusCode != 200) {
       throw Exception("삭제를 실패했습니다.");
@@ -209,7 +238,7 @@ class ApiService {
   // final res
   // 개발 회사 상태 확인용 API
   static Future<Result> healthCheck(int id) async {
-    final res = await http.get(Uri.parse('$url${ApiConstants.result}${ApiConstants.health}'));
+    final res = await http.get(Uri.parse('$url/${ApiConstants.result}${ApiConstants.health}'));
 
     if(res.statusCode == 200) {
       Map<String, dynamic> jsonData = json.decode(res.body);

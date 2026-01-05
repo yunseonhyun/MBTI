@@ -61,6 +61,7 @@ class _ResultDetailScreenState extends State<ResultDetailScreen> {
     // data = 지역변수 = {}를 탈출할 경우 변수의 의미가 소멸된다.
     try{
       final data = await ApiService.getResultsByUserName(widget.userName);
+      print('눌림');
       setState(() {
         // results = 전역번수로 Widget build에 접근할 수 있는 변수 공간
         results = data;
@@ -116,13 +117,19 @@ class _ResultDetailScreenState extends State<ResultDetailScreen> {
                 trailing: Icon(Icons.arrow_forward_ios),
                 // 한 줄의 어떤 곳을 선택하더라도 세부 정보를 확인할 수 있는 모달 창 띄우기
                 // 예약 세부 내용이 담긴 모달창
+                // 공유하기와 같은 세부 기능을 넣을 수 있지만
+                // 되도록이면 위젯으로 따로 생성 후, 기능 설정하기
                 onTap: (){
                   showDialog(context: context,
                       builder: (context) => AlertDialog(
                         title: Text(r.resultType),
                         content: Text('${r.typeName ?? r.resultType} \n\n ${r.description ?? "정보 없음"}'),
                         actions: [
-                          TextButton(onPressed: () => Navigator.pop(context), child: Text('닫기'))
+                          Text('공유하기'),
+                          TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: Text('닫기'),
+                          ),
                         ],
                       ));
                 },
