@@ -65,42 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // 유효성 검사 함수
   // 기능 중에 일부라도 문법상 문제가 생기면 기능 자체가 작동 중지
-  bool _validateName() {
-    String name = _nameController.text.trim();
 
-    // 1. 빈 값 체크
-    if (name.isEmpty) {
-      setState(() {
-        _errorText = '이름을 입력해주세요.';
-      });
-      return false;
-    }
-
-    // 2. 글자수 체크 (2글자 미만)
-    if (name.length < 2) {
-      setState(() {
-        _errorText = '이름은 최소 2글자 이상이어야 합니다.';
-      });
-      return false;
-    }
-
-    // 3. 한글/영문 이외 특수문자나 숫자 포함 체크 여부(정규식)
-    // 만약 숫자도 허용하려면 r'^[가-힇-a-zA-Z0-9]+$'로 변경
-    // 만약 숫자도 허용하려면 r'^[가-힇-a-zA-Z0-9]+$'- : 어디서부터 어디까지
-    // 가-힇 가에서부터 힇까지 힇에서 a까지는 잘못된 문법 정규식 동작 안함
-    if (!RegExp(r'^[가-힇a-zA-Z]+$').hasMatch(name)) {
-      setState(() {
-        _errorText = '한글 또는 영문만 입력 가능합니다\n(특수문자, 숫자 불가)';
-      });
-      return false;
-    }
-
-    // 통과 시 에러 메세지 비움
-    setState(() {
-      _errorText = null;
-    });
-    return true;
-  }
 
   // UI 화면
   /*
