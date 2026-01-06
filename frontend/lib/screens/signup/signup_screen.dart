@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/services/api_service.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/auth_provider.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -50,10 +54,49 @@ class _SignupScreenState extends State<SignupScreen> {
     return true;
   }
 
-  void _handleSignup() {
+
+  // 백엔드와 주고받는 기능에서 Future<> 작성안해도 문제가 발생하지 않음
+  // 프론트엔드와 백엔드와 데이터를 주고받을 때 중간에 언젠가 문제가 발생할 수 있기 때문에
+  // 백엔드와 주고받는 기능이다 선언과 같이 Future를 작성해주자
+
+  Future <void> _handleSignup() async {
     // 백엔드 회원가입 API 호출
     // 성공 -> 자동로그인과 함께 검사 화면 이동
     // 실패 에러메세지 로딩해지
+    if(!_validateName()) return;
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      String name = _nameController.text.trim();
+      final user = await ApiService.signUp(name);
+
+      if(mounted) {
+        // Provider에 로그인 정보를 저장
+        await context.read<AuthProvider>().login(user);
+
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('${user.userName}님, 회원가입이 완료되었습니다.'),
+            backgroundColor: Colors.green,
+            duration: Duration(seconds: 2),
+            )
+        );
+        context.go('/test', extra: name);
+      }
+    } catch(e) {
+        if(mounted){
+          setState(() {
+            _isLoading = false;
+          });
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('회원가입에 실패했습니다. 다시 시도해주세요.'),
+            backgroundColor: Colors.red)
+          );
+        }
+    }
   }
 
   @override
@@ -109,7 +152,10 @@ class _SignupScreenState extends State<SignupScreen> {
                         // 만약 숫자가 보이면 -> 숫자는 입력할 수 없습니다.
                         if (RegExp(r'[0-9]').hasMatch(value)) {
                           _errorText = "숫자는 입력할 수 없습니다.";
-                        } else if (RegExp(r'[각-힣a-zA-Z]').hasMatch(value)) {
+                          // 가-힣 : ㄱ ㄴ ㄷ ㄹ 처럼 자음 모음 형태의 글자는 사용 불가
+                          // ㄱ-힇 : 이런 형태로 한글로 되어 있는 모든 글자를 사용하겠다.
+                          // ㅎ 우리 회사가 원하는 한글 아님 홍 과 같이 자음과 모음으로 이루어진 한글만 취급하겠다.
+                        } else if (RegExp(r'[^가-힣a-zA-Z]').hasMatch(value)) {
                           _errorText = "한글과 영어만 입력 가능합니다.";
                         } else {
                           _errorText = null;

@@ -30,7 +30,7 @@ class AuthProvider with ChangeNotifier {
   }
 
   Future<void> logout() async {
-    _user = user;
+    _user = null;
 
     // SharedPreferences에 사용자 정보 삭제
     final prefs = await SharedPreferences.getInstance();
@@ -40,7 +40,7 @@ class AuthProvider with ChangeNotifier {
     notifyListeners(); // UI 업데이
   }
 
-  Future<void> loadSaveUser(User user) async {
+  Future<void> loadSaveUser() async {
     _isLoading = true;
     notifyListeners(); // UI 업데이트
     try {

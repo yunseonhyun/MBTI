@@ -86,7 +86,7 @@ final GoRouter _router = GoRouter(
           }
       ),
       GoRoute(
-          path: '/signUp',
+          path: '/signup',
           builder: (context, state) => const SignupScreen()),
       GoRoute(
           path: '/types',
